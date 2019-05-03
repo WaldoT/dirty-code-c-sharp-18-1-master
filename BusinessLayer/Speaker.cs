@@ -21,6 +21,8 @@ namespace BusinessLayer
 		public int RegistrationFee { get; set; }
 		public List<BusinessLayer.Session> Sessions { get; set; }
 
+        //Realizando Cambios segun el Laboratoio 03
+
 		/// <summary>
 		/// Register a speaker
 		/// </summary>
