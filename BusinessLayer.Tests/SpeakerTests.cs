@@ -18,7 +18,7 @@ namespace BusinessLayer.Tests
 			speaker.FirstName = "";
 			
 			//act
-			var exception = ExceptionAssert.Throws<ArgumentNullException>( () => speaker.Register(repository));
+			var exception = ExceptionAssert.Throws<ArgumentNullException>( () => speaker.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(ArgumentNullException));
@@ -32,7 +32,7 @@ namespace BusinessLayer.Tests
 			speaker.LastName = "";
 
 			//act
-			var exception = ExceptionAssert.Throws<ArgumentNullException>(() => speaker.Register(repository));
+			var exception = ExceptionAssert.Throws<ArgumentNullException>(() => speaker.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(ArgumentNullException));
@@ -46,7 +46,7 @@ namespace BusinessLayer.Tests
 			speaker.Email = "";
 
 			//act
-			var exception = ExceptionAssert.Throws<ArgumentNullException>(() => speaker.Register(repository));
+			var exception = ExceptionAssert.Throws<ArgumentNullException>(() => speaker.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(ArgumentNullException));
@@ -60,7 +60,7 @@ namespace BusinessLayer.Tests
 			speaker.Employer = "Microsoft";
 
 			//act
-			int? speakerId = speaker.Register(new SqlServerCompactRepository());
+			int? speakerId = speaker.RegisterSpeaker(new SqlServerCompactRepository());
 
 			//assert
 			Assert.IsFalse(speakerId == null);
@@ -73,7 +73,7 @@ namespace BusinessLayer.Tests
 			var speaker = GetSpeakerWithRedFlags();
 
 			//act
-			int? speakerId = speaker.Register(new SqlServerCompactRepository());
+			int? speakerId = speaker.RegisterSpeaker(new SqlServerCompactRepository());
 
 			//assert
 			Assert.IsFalse(speakerId == null);
@@ -93,7 +93,7 @@ namespace BusinessLayer.Tests
 			};
 
 			//act
-			int? speakerId = speaker.Register(new SqlServerCompactRepository());
+			int? speakerId = speaker.RegisterSpeaker(new SqlServerCompactRepository());
 
 			//assert
 			Assert.IsFalse(speakerId == null);
@@ -109,7 +109,7 @@ namespace BusinessLayer.Tests
 			};
 
 			//act
-			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.NoSessionsApprovedException>(() => speaker.Register(repository));
+			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.NoSessionsApprovedException>(() => speaker.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(Speaker.NoSessionsApprovedException));
@@ -123,7 +123,7 @@ namespace BusinessLayer.Tests
 			speaker.Sessions = new List<Session>();
 
 			//act
-			var exception = ExceptionAssert.Throws<ArgumentException>(() => speaker.Register(repository));
+			var exception = ExceptionAssert.Throws<ArgumentException>(() => speaker.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(ArgumentException));
@@ -138,7 +138,7 @@ namespace BusinessLayer.Tests
 			speakerThatDoesntAppearExceptional.Browser = new WebBrowser("IE", 6);
 
 			//act
-			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.SpeakerDoesntMeetRequirementsException>(() => speakerThatDoesntAppearExceptional.Register(repository));
+			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.SpeakerDoesntMeetRequirementsException>(() => speakerThatDoesntAppearExceptional.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(Speaker.SpeakerDoesntMeetRequirementsException));
@@ -153,7 +153,7 @@ namespace BusinessLayer.Tests
 			speakerThatDoesntAppearExceptional.Email = "name@aol.com";
 
 			//act
-			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.SpeakerDoesntMeetRequirementsException>(() => speakerThatDoesntAppearExceptional.Register(repository));
+			var exception = ExceptionAssert.Throws<BusinessLayer.Speaker.SpeakerDoesntMeetRequirementsException>(() => speakerThatDoesntAppearExceptional.RegisterSpeaker(repository));
 
 			//assert
 			Assert.AreEqual(exception.GetType(), typeof(Speaker.SpeakerDoesntMeetRequirementsException));
